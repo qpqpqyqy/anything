@@ -38,16 +38,16 @@ for i in range(0, b):
 
 
 for i in range(0, b):
-    if dan_buk == "단리":
-        if juk_yen == "적금":
+    if dan_buk[i] == "단리":
+        if juk_yen[i] == "적금":
             ans.append(dan_juk(A[i], r[i], n[i]))
         else:
             ans.append(dan_yen(A[i], r[i], n[i]))
     else:
-        if juk_yen == "적금":
+        if juk_yen[i] == "적금":
             ans.append(buk_juk(A[i], r[i], n[i]))
         else:
             ans.append(buk_yen(A[i], r[i], n[i]))
 
 for i in range(0, b):
-    print(ans[i])
+    print(f"{i+1}번째 상품의 원리합계: {ans[i]:,.2f}원")
