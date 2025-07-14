@@ -1,0 +1,53 @@
+b = int(input("비교할 상품 수:"))
+A = []
+r = []
+n = []
+dan_buk = []
+year_mounth = []
+juk_yen = []
+ans = []
+
+
+def dan_juk(A, r, n):
+    return A*(1 + r * ((n + 1) / 2))
+
+def dan_yen(A, r, n):
+    return A * (1 + (r * n))
+
+def buk_juk(A, r, n):
+    return A * ((((1 + r)**n) - 1 )/ r)
+
+def buk_yen(A, r, n):
+    return A * ((1 + r)**n)
+
+
+
+
+
+for i in range(0, b):
+    dan_buk.append(input("단리 or 복리:"))
+    year_mounth.append(input("년 or 월:"))
+    juk_yen.append(input("적금 or 예금:"))
+    A.append(int(input("원금:")))
+    if year_mounth[i] == "년":
+        r.append(float(input("연 이자율 (예: 5%): ").replace("%", "")) / 100)
+        n.append(int(input("기간 (년):")))
+    else:
+        r.append(float(input("월 이자율 (예: 5%): ").replace("%", "")) / 100)
+        n.append(int(input("기간 (월):")))
+
+
+for i in range(0, b):
+    if dan_buk == "단리":
+        if juk_yen == "적금":
+            ans.append(dan_juk(A[i], r[i], n[i]))
+        else:
+            ans.append(dan_yen(A[i], r[i], n[i]))
+    else:
+        if juk_yen == "적금":
+            ans.append(buk_juk(A[i], r[i], n[i]))
+        else:
+            ans.append(buk_yen(A[i], r[i], n[i]))
+
+for i in range(0, b):
+    print(ans[i])
